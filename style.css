@@ -1,3 +1,8 @@
+:root {
+  --grid-rows: ;
+  --grid-cols: ;
+}
+
 body  {
   display: flex;
   flex-direction: column;
@@ -37,11 +42,15 @@ h1 {
 
 #grid {
   display: grid;
-  grid-template-rows: repeat(16, 1fr);
-  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(var(--grid-rows), 1fr);
+  grid-template-columns: repeat(var(--grid-rows), 1fr);
   border: solid black;
-  height: 650px;
-  width: 650px;
+  height: 550px;  
+  width: 550px;
+}
+
+.gridItem {
+  border: 0.1px dashed rgba(85, 83, 83, 0.6);
 }
 
 footer  {
