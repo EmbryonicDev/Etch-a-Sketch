@@ -20,13 +20,28 @@ h1 {
 
 #mainContr  {
   display: flex;
-  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
 }
 
 #settings  {
   display: flex;
   flex-direction: column;
   gap: 18px;
+}
+
+.btns {
+  width: 150px;
+}
+
+#grid {
+  display: grid;
+  grid-template-rows: repeat(16, 1fr);
+  grid-template-columns: repeat(16, 1fr);
+  border: solid black;
+  height: 650px;
+  width: 650px;
 }
 
 footer  {
