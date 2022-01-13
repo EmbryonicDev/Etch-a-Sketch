@@ -1,5 +1,5 @@
 let size = 16;
-let brushColor = "#808080"
+let brushColor = "#000000"
 
 const mainContr = document.querySelector('#mainContr');
 const settings = document.querySelector('#settings');
@@ -36,6 +36,13 @@ gridBuild(size);
 
 chooseColor.addEventListener('input', () => {
   brushColor = chooseColor.value;
+});
+
+rainbowBtn.addEventListener('click', () => {
+  grid.addEventListener('mouseover', (e) =>  {
+    console.log(e.type);
+    brushColor = "#" + ((1<<24)*Math.random() | 0).toString(16);
+  });
 });
 
 eraserBtn.addEventListener('click', () => {
