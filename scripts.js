@@ -42,6 +42,10 @@ eraserBtn.addEventListener('click', () => {
   brushColor = "white"
 })
 
+clearBtn.addEventListener('click', () => {
+  gridBuild(size);
+})
+
 function updateSizeValue(value) {
   sizeValue.innerText = `${value} x ${value}`
 }
