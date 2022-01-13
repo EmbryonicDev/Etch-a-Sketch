@@ -11,17 +11,6 @@ const sizeValue = document.querySelector('#sizeValue');
 const sizeSlider = document.querySelector('#sizeSlider');
 const grid = document.querySelector('#grid');
 
-
-function gridSize(size) {
-  grid.style.setProperty('--grid-rows', size);
-  grid.style.setProperty('--grid-cols', size);
-  for (c = 0; c < (size * size); c++) {
-    let cell = document.createElement("div");
-    // cell.innerText = (c + 1);
-    grid.appendChild(cell).className = "gridItem";
-  };
-};
-
 gridSize(size);
 
 sizeSlider.onmousemove = (e) => updateSizeValue(e.target.value);
