@@ -11,6 +11,9 @@ const sizeValue = document.querySelector('#sizeValue');
 const sizeSlider = document.querySelector('#sizeSlider');
 const grid = document.querySelector('#grid');
 
+sizeSlider.onmousemove = (e) => updateSizeValue(e.target.value);
+sizeSlider.onchange = (e) => changeSize(e.target.value)
+
 function gridSize(size) {
   grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
   grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -24,11 +27,13 @@ function gridSize(size) {
 
 gridSize(size);
 
-sizeSlider.onmousemove = (e) => updateSizeValue(e.target.value);
-// sizeSlider.onchange = (e) => changeSize(e.target.value)
-
 function updateSizeValue(value) {
   sizeValue.innerText = `${value} x ${value}`
+}
+
+function changeSize(newSize) {
+  size = newSize;
+  gridSize(size);
 }
 
 
