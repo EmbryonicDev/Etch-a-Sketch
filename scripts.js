@@ -1,4 +1,4 @@
-let size = 100;
+let size = 16;
 
 const mainContr = document.querySelector('#mainContr');
 const settings = document.querySelector('#settings');
@@ -10,6 +10,17 @@ const clearBtn = document.querySelector('#clearBtn');
 const sizeValue = document.querySelector('#sizeValue');
 const sizeSlider = document.querySelector('#sizeSlider');
 const grid = document.querySelector('#grid');
+
+function gridSize(size) {
+  grid.style.gridTemplateRows = "repeat(${size}, 1fr)";
+  grid.style.gridTemplateColumns = "repeat(${size}, 1fr)";
+
+  for(i = 0; i < size; i++) {
+    let cell = document.createElement('div');
+    cell.classList.add('cell');
+    grid.append(cell);
+  }
+}
 
 gridSize(size);
 
