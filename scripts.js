@@ -3,7 +3,7 @@ let brushColor = "#808080"
 
 const mainContr = document.querySelector('#mainContr');
 const settings = document.querySelector('#settings');
-const colorBtn = document.querySelector('#colorBtn');
+const chooseColor = document.querySelector('#chooseColor');
 const flashBtn = document.querySelector('#flashBtn');
 const rainbowBtn = document.querySelector('#rainbowBtn');
 const eraserBtn = document.querySelector('#eraserBtn');
@@ -19,7 +19,7 @@ sizeSlider.onchange = (e) => changeSize(e.target.value);
 function gridBuild(size) {
   grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
   grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-  while (grid.firstChild) {
+  while(grid.firstChild) {
     grid.removeChild(grid.lastChild);
   }
   for(i = 0; i < size * size; i++) {
@@ -33,6 +33,10 @@ function gridBuild(size) {
 }
 
 gridBuild(size);
+
+eraserBtn.addEventListener('click', () => {
+  brushColor = "white"
+})
 
 function updateSizeValue(value) {
   sizeValue.innerText = `${value} x ${value}`
