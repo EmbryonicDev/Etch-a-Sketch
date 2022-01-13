@@ -47,7 +47,7 @@ h1 {
   width: 550px;
 }
 
-.gridItem {
+.cell {
   border: 0.1px dashed rgba(85, 83, 83, 0.1);
 }
 
