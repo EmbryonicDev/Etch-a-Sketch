@@ -1,9 +1,9 @@
-default grid size: 16 x 16 
+*default grid size: 16 x 16 
 default color
 
 
 GRID
-gridlines
+*gridlines
 sketch pad border with shadow
 
 hold down mouse to draw

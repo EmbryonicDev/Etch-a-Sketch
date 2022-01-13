@@ -18,6 +18,10 @@ function gridBuild(size) {
   grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
   grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
 
+  while (grid.firstChild) {
+    grid.removeChild(grid.lastChild);
+  }
+
   for(i = 0; i < size * size; i++) {
     let cell = document.createElement('div');
     cell.classList.add('cell');
@@ -35,7 +39,6 @@ function changeSize(newSize) {
   size = newSize;
   gridBuild(size);
 }
-
 
 
 
