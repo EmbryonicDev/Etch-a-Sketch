@@ -12,10 +12,10 @@ const sizeSlider = document.querySelector('#sizeSlider');
 const grid = document.querySelector('#grid');
 
 function gridSize(size) {
-  grid.style.gridTemplateRows = "repeat(${size}, 1fr)";
-  grid.style.gridTemplateColumns = "repeat(${size}, 1fr)";
+  grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+  grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
 
-  for(i = 0; i < size; i++) {
+  for(i = 0; i < size * size; i++) {
     let cell = document.createElement('div');
     cell.classList.add('cell');
     grid.append(cell);
