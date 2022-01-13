@@ -35,18 +35,25 @@ function gridBuild(size) {
 gridBuild(size);
 
 chooseColor.addEventListener('input', () => {
+  rainbowOff();
   brushColor = chooseColor.value;
 });
 
 rainbowBtn.addEventListener('click', () => {
-  grid.addEventListener('mouseover', (e) =>  {
-    console.log(e.type);
-    brushColor = "#" + ((1<<24)*Math.random() | 0).toString(16);
+  grid.addEventListener('mouseover', rainbowOn);
   });
-});
+
+function rainbowOn(e)  {
+  brushColor = "#" + ((1<<24)*Math.random() | 0).toString(16);
+}
+
+function rainbowOff() {
+  grid.removeEventListener('mouseover', rainbowOn);
+}
 
 eraserBtn.addEventListener('click', () => {
-  brushColor = "white"
+  rainbowOff()
+  brushColor = "white";
 })
 
 clearBtn.addEventListener('click', () => {
