@@ -34,6 +34,10 @@ function gridBuild(size) {
 
 gridBuild(size);
 
+chooseColor.addEventListener('input', () => {
+  brushColor = chooseColor.value;
+});
+
 eraserBtn.addEventListener('click', () => {
   brushColor = "white"
 })
