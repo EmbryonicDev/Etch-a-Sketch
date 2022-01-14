@@ -52,7 +52,7 @@ function rainbowOff() {
 
 eraserBtn.addEventListener('click', () => {
   rainbowOff()
-  brushColor = "white";
+  brushColor = "rgb(248, 247, 246)";
 })
 
 clearBtn.addEventListener('click', () => {
