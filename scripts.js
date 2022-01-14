@@ -1,5 +1,6 @@
 let size = 16;
 let brushColor = "#101010"
+let shaderOn = false;
 
 const mainContr = document.querySelector('#mainContr');
 const settings = document.querySelector('#settings');
@@ -25,46 +26,29 @@ function gridBuild(size) {
   for(i = 0; i < size * size; i++) {
     let cell = document.createElement('div');
     cell.classList.add('cell');
-    cell.addEventListener('mouseover', function(e)  {
-      // e.target.style.background = brushColor;
-      // console.log(e.type);
-    });
     grid.append(cell);
   }
 }
 
 gridBuild(size);
 
-// *********************************************
-
-  for(i = 0; i < cell.length; ++i)  {
+function drawOn() {
+  for(i = 0; i < size * size; ++i)  {
     // cell[i].classList.add('testing');
     cell[i].addEventListener('mouseover', function(e) {
-      e.target.style.background = brushColor;
-      console.log('mouseover events added');
+    e.target.style.background = brushColor;
+    console.log('hello')
     }, false);
   }
+}
+drawOn()
 
-// willThisWork()
+shader.addEventListener('click', () => {
+  shaderOn = true
+  let opacity = cell.style.opacity;
+  brushColor = '#101010'
+})
 
-// shader.addEventListener('click', () => {
-//   brushColor = "#101010"
-//   cells.forEach(cell => {
-//     addEventListener('mouseout', function(e) {
-//       let opacity = cell.style.opacity;
-//       if(cell.classList.contains('shade'))  {
-//         cell.style.opacity = (Number(opacity) + 0.1);
-//         console.log('increasing opacity')
-//       } else  {
-//           cell.classList.add('shade');
-//           cell.setAttribute('style', 'opacity:0.1');
-//           console.log('shade class added :-)')
-//       }
-//     })
-//   })
-// })
-
-// ************************************************
 chooseColor.addEventListener('input', () => {
   rainbowOff();
   brushColor = chooseColor.value;
@@ -89,6 +73,7 @@ eraserBtn.addEventListener('click', () => {
 
 clearBtn.addEventListener('click', () => {
   gridBuild(size);
+  drawOn()
 })
 
 function updateSizeValue(value) {
@@ -98,4 +83,5 @@ function updateSizeValue(value) {
 function changeSize(newSize) {
   size = newSize;
   gridBuild(size);
+  drawOn();
 }
