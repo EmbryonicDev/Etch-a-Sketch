@@ -4,7 +4,6 @@ let brushColor = "#000000"
 const mainContr = document.querySelector('#mainContr');
 const settings = document.querySelector('#settings');
 const chooseColor = document.querySelector('#chooseColor');
-const flashBtn = document.querySelector('#flashBtn');
 const rainbowBtn = document.querySelector('#rainbowBtn');
 const eraserBtn = document.querySelector('#eraserBtn');
 const clearBtn = document.querySelector('#clearBtn');
