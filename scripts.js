@@ -1,6 +1,6 @@
 let size = 24;
 let brushColor = "#101010"
-let shaderOn = false;
+// let shaderOn = false;
 
 const mainContr = document.querySelector('#mainContr');
 const settings = document.querySelector('#settings');
@@ -43,11 +43,11 @@ function drawOn() {
 }
 drawOn()
 
-shader.addEventListener('click', () => {
-  shaderOn = true
-  let opacity = cell.style.opacity;
-  brushColor = '#101010'
-})
+// shader.addEventListener('click', () => {
+//   shaderOn = true
+//   let opacity = cell.style.opacity;
+//   brushColor = '#101010'
+// })
 
 chooseColor.addEventListener('input', () => {
   rainbowOff();
