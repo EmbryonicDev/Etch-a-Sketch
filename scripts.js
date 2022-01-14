@@ -1,16 +1,16 @@
 let size = 16;
-let brushColor = "#000000"
+let brushColor = "#101010"
 
 const mainContr = document.querySelector('#mainContr');
 const settings = document.querySelector('#settings');
 const chooseColor = document.querySelector('#chooseColor');
+const shader = document.querySelector('#shader');
 const rainbowBtn = document.querySelector('#rainbowBtn');
 const eraserBtn = document.querySelector('#eraserBtn');
 const clearBtn = document.querySelector('#clearBtn');
 const sizeValue = document.querySelector('#sizeValue');
 const sizeSlider = document.querySelector('#sizeSlider');
 const grid = document.querySelector('#grid');
-const cell = document.getElementsByClassName('cell');
 
 sizeSlider.onmousemove = (e) => updateSizeValue(e.target.value);
 sizeSlider.onchange = (e) => changeSize(e.target.value);
@@ -26,6 +26,7 @@ function gridBuild(size) {
     cell.classList.add('cell');
     cell.addEventListener('mouseover', function(e)  {
       e.target.style.background = brushColor;
+      console.log(e.type);
     });
     grid.append(cell);
   }
@@ -33,10 +34,34 @@ function gridBuild(size) {
 
 gridBuild(size);
 
+let cells = document.querySelectorAll('div.cell');
+// cells.forEach(cell => {
+//   addEventListener('mouseover', function(e) {
+//     cell.style.opacity = 1;
+//   })
+// })
+
 chooseColor.addEventListener('input', () => {
   rainbowOff();
   brushColor = chooseColor.value;
 });
+
+// shader.addEventListener('click', () => {
+//   brushColor = "#101010"
+//   cells.forEach(cell => {
+//     addEventListener('mouseout', function(e) {
+//       let opacity = cell.style.opacity;
+//       if(cell.classList.contains('shade'))  {
+//         cell.style.opacity = (Number(opacity) + 0.1);
+//         console.log('increasing opacity')
+//       } else  {
+//           cell.classList.add('shade');
+//           cell.setAttribute('style', 'opacity:0.1');
+//           console.log('shade class added :-)')
+//       }
+//     })
+//   })
+// })
 
 rainbowBtn.addEventListener('click', () => {
   grid.addEventListener('mouseover', rainbowOn);
