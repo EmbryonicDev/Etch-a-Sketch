@@ -11,6 +11,7 @@ const clearBtn = document.querySelector('#clearBtn');
 const sizeValue = document.querySelector('#sizeValue');
 const sizeSlider = document.querySelector('#sizeSlider');
 const grid = document.querySelector('#grid');
+const cell = document.getElementsByClassName('cell');
 
 sizeSlider.onmousemove = (e) => updateSizeValue(e.target.value);
 sizeSlider.onchange = (e) => changeSize(e.target.value);
@@ -25,8 +26,8 @@ function gridBuild(size) {
     let cell = document.createElement('div');
     cell.classList.add('cell');
     cell.addEventListener('mouseover', function(e)  {
-      e.target.style.background = brushColor;
-      console.log(e.type);
+      // e.target.style.background = brushColor;
+      // console.log(e.type);
     });
     grid.append(cell);
   }
@@ -34,17 +35,17 @@ function gridBuild(size) {
 
 gridBuild(size);
 
-let cells = document.querySelectorAll('div.cell');
-// cells.forEach(cell => {
-//   addEventListener('mouseover', function(e) {
-//     cell.style.opacity = 1;
-//   })
-// })
+// *********************************************
 
-chooseColor.addEventListener('input', () => {
-  rainbowOff();
-  brushColor = chooseColor.value;
-});
+  for(i = 0; i < cell.length; ++i)  {
+    // cell[i].classList.add('testing');
+    cell[i].addEventListener('mouseover', function(e) {
+      e.target.style.background = brushColor;
+      console.log('mouseover events added');
+    }, false);
+  }
+
+// willThisWork()
 
 // shader.addEventListener('click', () => {
 //   brushColor = "#101010"
@@ -62,6 +63,12 @@ chooseColor.addEventListener('input', () => {
 //     })
 //   })
 // })
+
+// ************************************************
+chooseColor.addEventListener('input', () => {
+  rainbowOff();
+  brushColor = chooseColor.value;
+});
 
 rainbowBtn.addEventListener('click', () => {
   grid.addEventListener('mouseover', rainbowOn);
