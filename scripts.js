@@ -1,4 +1,4 @@
-let size = 16;
+let size = 24;
 let brushColor = "#101010"
 let shaderOn = false;
 
