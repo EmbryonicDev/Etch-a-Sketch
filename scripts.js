@@ -10,6 +10,7 @@ const shader = document.querySelector('#shader');
 const rainbowBtn = document.querySelector('#rainbowBtn');
 const eraserBtn = document.querySelector('#eraserBtn');
 const clearBtn = document.querySelector('#clearBtn');
+const gridOnOff = document.querySelector('#gridOnOff');
 const sizeValue = document.querySelector('#sizeValue');
 const sizeSlider = document.querySelector('#sizeSlider');
 const grid = document.querySelector('#grid');
@@ -95,7 +96,7 @@ clearBtn.addEventListener('click', () => {
 })
 
 function updateSizeValue(value) {
-  sizeValue.innerText = `${value} x ${value}`
+  sizeValue.innerText = `Grid Size: ${value} x ${value}`
 }
 
 function changeSize(newSize) {
