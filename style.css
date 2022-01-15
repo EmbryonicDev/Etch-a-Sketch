@@ -16,6 +16,7 @@ header  {
 #header {
   margin-bottom: 20px;
   font-size: 60px;
+  text-shadow: 4px 4px #00ff2a;
 }
 
 #mainContr  {
