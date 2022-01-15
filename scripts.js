@@ -17,6 +17,7 @@ const cell = document.getElementsByClassName('cell');
 sizeSlider.onmousemove = (e) => updateSizeValue(e.target.value);
 sizeSlider.onchange = (e) => changeSize(e.target.value);
 
+
 function gridBuild(size) {
   grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
   grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -44,7 +45,7 @@ function drawOn() {
         brushColor = "rgb(248, 247, 246)"
         console.log("Eraser pen selected")
       } else if(selectedPen === "colorPickerPen") {
-        brushColor = brushColor;
+        brushColor = chooseColor.value;
         console.log("Color Picker Pen Selected");
       }
     }, false);
@@ -59,7 +60,6 @@ drawOn()
 // })
 
 chooseColor.addEventListener('input', () => {
-  brushColor = chooseColor.value;
   selectedPen = "colorPickerPen"
 });
 
@@ -68,7 +68,6 @@ rainbowBtn.addEventListener('click', () => {
   });
 
 eraserBtn.addEventListener('click', () => {
-  brushColor = "rgb(248, 247, 246)";
   selectedPen = "eraserPen"
 })
 
