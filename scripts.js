@@ -10,7 +10,6 @@ const shader = document.querySelector('#shader');
 const rainbowBtn = document.querySelector('#rainbowBtn');
 const eraserBtn = document.querySelector('#eraserBtn');
 const clearBtn = document.querySelector('#clearBtn');
-const gridOnOff = document.querySelector('#gridOnOff');
 const sizeValue = document.querySelector('#sizeValue');
 const sizeSlider = document.querySelector('#sizeSlider');
 const grid = document.querySelector('#grid');
@@ -59,16 +58,16 @@ function drawOn() {
         brushColor = chooseColor.value;
         console.log("Color Picker Pen Selected");
       } else if(selectedPen === "shaderPen")  {
-        if(e.target.classList.contains('shade'))  {
-          e.target.style.opacity = parseFloat(e.target.style.opacity) + (1/8);
-          console.log(".shade Class added to a cell");
-        } else {
-          e.target.style.opacity = "0.125"
-          e.target.classList.add('shade');
-        }
+          if(e.target.classList.contains('shade'))  {
+            e.target.style.opacity = parseFloat(e.target.style.opacity) + (1/8);
+            console.log(".shade Class added to a cell");
+          } else {
+            e.target.style.opacity = "0.125"
+            e.target.classList.add('shade');
+          }
         brushColor = defualtBrushColor;
       }
-    }, false);
+    });
   }
 }
 drawOn()
