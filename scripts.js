@@ -1,5 +1,6 @@
+const defualtBrushColor = "#101010";
 let size = 24;
-let brushColor = "#101010"
+let brushColor = defualtBrushColor;
 let selectedPen = ""
 
 // const mainContr = document.querySelector('#mainContr');
@@ -47,17 +48,25 @@ function drawOn() {
       } else if(selectedPen === "colorPickerPen") {
         brushColor = chooseColor.value;
         console.log("Color Picker Pen Selected");
+      } else if(selectedPen === "shaderPen")  {
+        
+        if(e.target.classList.contains('shade'))  {
+          e.target.style.opacity = parseFloat(e.target.style.opacity) + (1/8);
+          console.log(".shade Class added to this cell");
+        } else {
+          e.target.style.opacity = "0.125"
+          e.target.classList.add('shade');
+        }
+        brushColor = defualtBrushColor;
       }
     }, false);
   }
 }
 drawOn()
 
-// shader.addEventListener('click', () => {
-//   shaderOn = true
-//   let opacity = cell.style.opacity;
-//   brushColor = '#101010'
-// })
+shader.addEventListener('click', () => {
+  selectedPen = "shaderPen";
+})
 
 chooseColor.addEventListener('input', () => {
   selectedPen = "colorPickerPen"
