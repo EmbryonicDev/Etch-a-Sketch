@@ -1,9 +1,9 @@
 let size = 24;
 let brushColor = "#101010"
-// let shaderOn = false;
+let selectedPen = ""
 
-const mainContr = document.querySelector('#mainContr');
-const settings = document.querySelector('#settings');
+// const mainContr = document.querySelector('#mainContr');
+// const settings = document.querySelector('#settings');
 const chooseColor = document.querySelector('#chooseColor');
 const shader = document.querySelector('#shader');
 const rainbowBtn = document.querySelector('#rainbowBtn');
@@ -36,8 +36,17 @@ function drawOn() {
   for(i = 0; i < size * size; ++i)  {
     // cell[i].classList.add('testing');
     cell[i].addEventListener('mouseover', function(e) {
-    e.target.style.background = brushColor;
-    console.log('hello')
+      e.target.style.background = brushColor;
+      if(selectedPen === "rainbowPen")  {
+        brushColor = "#" + ((1<<24)*Math.random() | 0).toString(16);
+        console.log('Rainbow pen selected' );
+      } else if(selectedPen === "eraserPen")  {
+        brushColor = "rgb(248, 247, 246)"
+        console.log("Eraser pen selected")
+      } else if(selectedPen === "colorPickerPen") {
+        brushColor = brushColor;
+        console.log("Color Picker Pen Selected");
+      }
     }, false);
   }
 }
@@ -50,30 +59,23 @@ drawOn()
 // })
 
 chooseColor.addEventListener('input', () => {
-  rainbowOff();
   brushColor = chooseColor.value;
+  selectedPen = "colorPickerPen"
 });
 
 rainbowBtn.addEventListener('click', () => {
-  grid.addEventListener('mouseover', rainbowOn);
+  selectedPen = "rainbowPen";
   });
 
-function rainbowOn(e)  {
-  brushColor = "#" + ((1<<24)*Math.random() | 0).toString(16);
-}
-
-function rainbowOff() {
-  grid.removeEventListener('mouseover', rainbowOn);
-}
-
 eraserBtn.addEventListener('click', () => {
-  rainbowOff()
   brushColor = "rgb(248, 247, 246)";
+  selectedPen = "eraserPen"
 })
 
 clearBtn.addEventListener('click', () => {
   gridBuild(size);
   drawOn()
+  console.log("Grid Cleared")
 })
 
 function updateSizeValue(value) {
