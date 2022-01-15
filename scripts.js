@@ -36,9 +36,18 @@ gridBuild(size);
 
 function drawOn() {
   for(i = 0; i < size * size; ++i)  {
-    // cell[i].classList.add('testing');
     cell[i].addEventListener('mouseover', function(e) {
       e.target.style.background = brushColor;
+
+      // Restore opacity & remove .shade after using shader pen
+      if((selectedPen != "shaderPen") && e.target.classList.contains('shade')) {
+        e.target.classList.remove('shade');
+        e.target.style.backgroundColor = brushColor;
+        e.target.style.opacity = "1";
+        console.log(".shade Class removed from a cell")
+      }
+
+      // Select pen color
       if(selectedPen === "rainbowPen")  {
         brushColor = "#" + ((1<<24)*Math.random() | 0).toString(16);
         console.log('Rainbow pen selected' );
@@ -49,10 +58,9 @@ function drawOn() {
         brushColor = chooseColor.value;
         console.log("Color Picker Pen Selected");
       } else if(selectedPen === "shaderPen")  {
-        
         if(e.target.classList.contains('shade'))  {
           e.target.style.opacity = parseFloat(e.target.style.opacity) + (1/8);
-          console.log(".shade Class added to this cell");
+          console.log(".shade Class added to a cell");
         } else {
           e.target.style.opacity = "0.125"
           e.target.classList.add('shade');
