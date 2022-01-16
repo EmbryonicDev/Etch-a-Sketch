@@ -6,7 +6,7 @@ Digital drawing toy
   
   Choose any color to draw with
   
-  Draw with greyscale: each pass over a cell will add 12.5% opacity until the cell is 100% black
+  Draw with greyscale: the first pass over a cell fills it with 12.5% opacity of black, after that each pass over a cell will add 12.5% opacity until the cell is 100% black
   
   Draw with rainbow feature: each pass over a cell generates a new random color to fill the cell with
   
