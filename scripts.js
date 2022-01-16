@@ -57,7 +57,6 @@ function drawOn() {
         e.target.classList.remove('shade');
         e.target.style.backgroundColor = brushColor;
         e.target.style.opacity = "1";
-        console.log(".shade Class removed from a cell")
       }
 
       // Select pen color
