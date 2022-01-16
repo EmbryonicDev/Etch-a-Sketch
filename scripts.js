@@ -32,7 +32,8 @@ function gridBuild(size) {
 
 gridBuild(size);
 
-function toggle() {
+
+function toggleGrid() {
   if(gridBtn.textContent === "Grid Off") {
     gridBtn.innerText = "Grid On"
     for(i = 0; i < size * size; i++) {
@@ -107,7 +108,7 @@ clearBtn.addEventListener('click', () => {
 })
 
 gridBtn.addEventListener('click', () => {
-  toggle()
+  toggleGrid()
 });
 
 function updateSizeValue(value) {
