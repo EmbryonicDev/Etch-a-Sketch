@@ -17,9 +17,6 @@ const gridContr = document.querySelector('#gridContr');
 const grid = document.querySelector('#grid');
 const cell = document.getElementsByClassName('cell');
 
-sizeSlider.onmousemove = (e) => updateSizeValue(e.target.value);
-sizeSlider.onchange = (e) => changeSize(e.target.value);
-
 function gridBuild(size) {
   grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
   grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -48,6 +45,7 @@ function toggleGrid() {
   }
 }
 
+// Draw when mousedown
 gridContr.addEventListener('mousedown', function(e) {
   console.log("You are Drawing");
   event.preventDefault();
@@ -59,6 +57,7 @@ body.addEventListener('mouseup', function(e) {
   penDown = false;
 })
 
+// Add eventListener to each cell & select pen
 function drawOn() {
   for(i = 0; i < size * size; ++i)  {
     cell[i].addEventListener('mouseover', function(e) {
@@ -97,6 +96,7 @@ function drawOn() {
 }
 drawOn()
 
+// Button eventListeners
 greyscale.addEventListener('click', () => {
   selectedPen = "greyscalePen";
 })
@@ -123,9 +123,14 @@ gridBtn.addEventListener('click', () => {
   toggleGrid()
 });
 
+// Slider update & buildGrid with new size
+sizeSlider.onmousemove = (e) => updateSizeValue(e.target.value);
+
 function updateSizeValue(value) {
   sizeValue.innerText = `Grid Size: ${value} x ${value}`
 }
+
+sizeSlider.onchange = (e) => changeSize(e.target.value);
 
 function changeSize(newSize) {
   size = newSize;
