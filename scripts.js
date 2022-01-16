@@ -2,7 +2,9 @@ const defualtBrushColor = "#101010";
 let size = 24;
 let brushColor = defualtBrushColor;
 let selectedPen = ""
+let draw = false;
 
+const body = document.querySelector('body');
 const chooseColor = document.querySelector('#chooseColor');
 const greyscale = document.querySelector('#greyscale');
 const rainbowBtn = document.querySelector('#rainbowBtn');
@@ -47,11 +49,23 @@ function toggleGrid() {
   }
 }
 
+body.addEventListener('mousedown', function(e) {
+  console.log("You are Drawing");
+  event.preventDefault();
+  draw = true;
+})
+
+body.addEventListener('mouseup', function(e) {
+  console.log("You Stopped Drawing");
+  draw = false;
+})
+
 function drawOn() {
   for(i = 0; i < size * size; ++i)  {
     cell[i].addEventListener('mouseover', function(e) {
-      e.target.style.background = brushColor;
-
+      if(draw)  {
+        e.target.style.background = brushColor;
+      }
       // Restore opacity & remove .shade after using greyscale pen
       if((selectedPen != "greyscalePen") && e.target.classList.contains('shade')) {
         e.target.classList.remove('shade');
