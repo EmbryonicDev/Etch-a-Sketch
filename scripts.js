@@ -34,7 +34,6 @@ function gridBuild(size) {
 
 gridBuild(size);
 
-
 function toggleGrid() {
   if(gridBtn.textContent === "Grid Off") {
     gridBtn.innerText = "Grid On"
@@ -65,33 +64,33 @@ function drawOn() {
     cell[i].addEventListener('mouseover', function(e) {
       if(penDown)  {
         e.target.style.background = brushColor;
-      }
-      // Restore opacity & remove .shade after using greyscale pen
-      if((selectedPen != "greyscalePen") && e.target.classList.contains('shade')) {
-        e.target.classList.remove('shade');
-        e.target.style.backgroundColor = brushColor;
-        e.target.style.opacity = "1";
-      }
 
-      // Select pen color
-      if(selectedPen === "rainbowPen")  {
-        brushColor = "#" + ((1<<24)*Math.random() | 0).toString(16);
-        console.log('Rainbow pen selected' );
-      } else if(selectedPen === "eraserPen")  {
-        brushColor = "rgb(248, 247, 246)"
-        console.log("Eraser pen selected")
-      } else if(selectedPen === "colorPickerPen") {
-        brushColor = chooseColor.value;
-        console.log("Color Picker Pen Selected");
-      } else if(selectedPen === "greyscalePen")  {
-          if(e.target.classList.contains('shade'))  {
-            e.target.style.opacity = parseFloat(e.target.style.opacity) + (1/8);
-            console.log(".shade Class added to a cell");
-          } else {
-            e.target.style.opacity = "0.125"
-            e.target.classList.add('shade');
-          }
-        brushColor = defualtBrushColor;
+        // Restore opacity & remove .shade after using greyscale pen
+        if((selectedPen != "greyscalePen") && e.target.classList.contains('shade')) {
+          e.target.classList.remove('shade');
+          e.target.style.backgroundColor = brushColor;
+          e.target.style.opacity = "1";
+        }
+        // Select pen color
+        if(selectedPen === "rainbowPen")  {
+          brushColor = "#" + ((1<<24)*Math.random() | 0).toString(16);
+          console.log('Rainbow pen selected' );
+        } else if(selectedPen === "eraserPen")  {
+          brushColor = "rgb(248, 247, 246)"
+          console.log("Eraser pen selected")
+        } else if(selectedPen === "colorPickerPen") {
+          brushColor = chooseColor.value;
+          console.log("Color Picker Pen Selected");
+        } else if(selectedPen === "greyscalePen")  {
+            if(e.target.classList.contains('shade'))  {
+              e.target.style.opacity = parseFloat(e.target.style.opacity) + (1/8);
+              console.log(".shade Class added to a cell");
+            } else {
+              e.target.style.opacity = "0.125";
+              e.target.classList.add('shade');
+            }
+          brushColor = defualtBrushColor;
+        }
       }
     });
   }
