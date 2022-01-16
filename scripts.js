@@ -4,7 +4,7 @@ let brushColor = defualtBrushColor;
 let selectedPen = ""
 
 const chooseColor = document.querySelector('#chooseColor');
-const shader = document.querySelector('#shader');
+const greyscale = document.querySelector('#greyscale');
 const rainbowBtn = document.querySelector('#rainbowBtn');
 const eraserBtn = document.querySelector('#eraserBtn');
 const clearBtn = document.querySelector('#clearBtn');
@@ -52,8 +52,8 @@ function drawOn() {
     cell[i].addEventListener('mouseover', function(e) {
       e.target.style.background = brushColor;
 
-      // Restore opacity & remove .shade after using shader pen
-      if((selectedPen != "shaderPen") && e.target.classList.contains('shade')) {
+      // Restore opacity & remove .shade after using greyscale pen
+      if((selectedPen != "greyscalePen") && e.target.classList.contains('shade')) {
         e.target.classList.remove('shade');
         e.target.style.backgroundColor = brushColor;
         e.target.style.opacity = "1";
@@ -70,7 +70,7 @@ function drawOn() {
       } else if(selectedPen === "colorPickerPen") {
         brushColor = chooseColor.value;
         console.log("Color Picker Pen Selected");
-      } else if(selectedPen === "shaderPen")  {
+      } else if(selectedPen === "greyscalePen")  {
           if(e.target.classList.contains('shade'))  {
             e.target.style.opacity = parseFloat(e.target.style.opacity) + (1/8);
             console.log(".shade Class added to a cell");
@@ -85,8 +85,8 @@ function drawOn() {
 }
 drawOn()
 
-shader.addEventListener('click', () => {
-  selectedPen = "shaderPen";
+greyscale.addEventListener('click', () => {
+  selectedPen = "greyscalePen";
 })
 
 chooseColor.addEventListener('input', () => {
