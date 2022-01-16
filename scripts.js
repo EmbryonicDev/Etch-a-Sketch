@@ -1,5 +1,5 @@
 const defualtBrushColor = "#101010";
-let size = 24;
+let size = 36;
 let brushColor = defualtBrushColor;
 let selectedPen = ""
 let penDown = false;
@@ -32,7 +32,6 @@ function gridBuild(size) {
     grid.append(cell);
   }
 }
-
 gridBuild(size);
 
 function toggleGrid() {
