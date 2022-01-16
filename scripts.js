@@ -13,6 +13,7 @@ const clearBtn = document.querySelector('#clearBtn');
 const gridBtn = document.querySelector('#gridBtn');
 const sizeValue = document.querySelector('#sizeValue');
 const sizeSlider = document.querySelector('#sizeSlider');
+const gridContr = document.querySelector('#gridContr');
 const grid = document.querySelector('#grid');
 const cell = document.getElementsByClassName('cell');
 
@@ -48,7 +49,7 @@ function toggleGrid() {
   }
 }
 
-body.addEventListener('mousedown', function(e) {
+gridContr.addEventListener('mousedown', function(e) {
   console.log("You are Drawing");
   event.preventDefault();
   penDown = true;
