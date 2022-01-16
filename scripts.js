@@ -10,6 +10,7 @@ const shader = document.querySelector('#shader');
 const rainbowBtn = document.querySelector('#rainbowBtn');
 const eraserBtn = document.querySelector('#eraserBtn');
 const clearBtn = document.querySelector('#clearBtn');
+const gridBtn = document.querySelector('#gridBtn');
 const sizeValue = document.querySelector('#sizeValue');
 const sizeSlider = document.querySelector('#sizeSlider');
 const grid = document.querySelector('#grid');
@@ -17,7 +18,6 @@ const cell = document.getElementsByClassName('cell');
 
 sizeSlider.onmousemove = (e) => updateSizeValue(e.target.value);
 sizeSlider.onchange = (e) => changeSize(e.target.value);
-
 
 function gridBuild(size) {
   grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
@@ -33,6 +33,20 @@ function gridBuild(size) {
 }
 
 gridBuild(size);
+
+function toggle() {
+  if(gridBtn.textContent === "Grid Off") {
+    gridBtn.innerText = "Grid On"
+    for(i = 0; i < size * size; i++) {
+      cell[i].style.border = 0;
+    }
+  } else if(gridBtn.textContent === "Grid On") {
+    gridBtn.innerText = "Grid Off"
+    for(i = 0; i < size * size; i++) {
+      cell[i].style.border = "0.1px dashed rgba(85, 83, 83, 0.1)";
+    }
+  }
+}
 
 function drawOn() {
   for(i = 0; i < size * size; ++i)  {
@@ -93,6 +107,10 @@ clearBtn.addEventListener('click', () => {
   drawOn()
   console.log("Grid Cleared")
 })
+
+gridBtn.addEventListener('click', () => {
+  toggle()
+});
 
 function updateSizeValue(value) {
   sizeValue.innerText = `Grid Size: ${value} x ${value}`
