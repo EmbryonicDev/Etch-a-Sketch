@@ -3,8 +3,6 @@ let size = 24;
 let brushColor = defualtBrushColor;
 let selectedPen = ""
 
-// const mainContr = document.querySelector('#mainContr');
-// const settings = document.querySelector('#settings');
 const chooseColor = document.querySelector('#chooseColor');
 const shader = document.querySelector('#shader');
 const rainbowBtn = document.querySelector('#rainbowBtn');
