@@ -62,29 +62,33 @@ function drawOn() {
       if(penDown)  {
         e.target.style.background = brushColor;
 
-        // Restore opacity & remove .shade after using greyscale pen
+        // Remove .shade after using greyscale pen
         if((selectedPen != "greyscalePen") && e.target.classList.contains('shade')) {
           e.target.classList.remove('shade');
-          e.target.style.backgroundColor = brushColor;
-          e.target.style.opacity = "1";
         }
+
         // Select pen color
         if(selectedPen === "rainbowPen")  {
           brushColor = "#" + ((1<<24)*Math.random() | 0).toString(16);
+          e.target.style.opacity = "1";
         } else if(selectedPen === "eraserPen")  {
           brushColor = "rgb(248, 247, 246)"
+          e.target.style.opacity = "1";
         } else if(selectedPen === "colorPickerPen") {
           brushColor = chooseColor.value;
+          e.target.style.opacity = "1";
         } else if(selectedPen === "greyscalePen")  {
+            brushColor = defualtBrushColor
             if(e.target.classList.contains('shade'))  {
               e.target.style.opacity = parseFloat(e.target.style.opacity) + (1/8);
             } else {
               e.target.style.opacity = "0.125";
               e.target.classList.add('shade');
             }
-          brushColor = defualtBrushColor;
+        } else {
+          e.target.style.background = brushColor;
         }
-      }
+      } 
     });
   }
 }
@@ -101,6 +105,7 @@ chooseColor.addEventListener('input', () => {
 
 rainbowBtn.addEventListener('click', () => {
   selectedPen = "rainbowPen";
+  drawOn();
   });
 
 eraserBtn.addEventListener('click', () => {
@@ -109,11 +114,11 @@ eraserBtn.addEventListener('click', () => {
 
 clearBtn.addEventListener('click', () => {
   gridBuild(size);
-  drawOn()
+  drawOn();
 })
 
 gridBtn.addEventListener('click', () => {
-  toggleGrid()
+  toggleGrid();
 });
 
 // Slider update & buildGrid with new size
