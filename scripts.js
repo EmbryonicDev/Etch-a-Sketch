@@ -47,15 +47,20 @@ function toggleGrid() {
 
 // Draw when mousedown
 gridContr.addEventListener('mousedown', function(e) {
-  console.log("You are Drawing");
   event.preventDefault();
   penDown = true;
 })
 
 body.addEventListener('mouseup', function(e) {
-  console.log("You Stopped Drawing");
   penDown = false;
 })
+
+// This allows the first cell clicked on to be painted as well. 
+for(i = 0; i < size * size; ++i)  {
+  cell[i].addEventListener('mousedown', function(e) {
+    e.target.style.background = brushColor;
+  })
+}
 
 // Add eventListener to each cell & select pen
 function drawOn() {
@@ -73,17 +78,13 @@ function drawOn() {
         // Select pen color
         if(selectedPen === "rainbowPen")  {
           brushColor = "#" + ((1<<24)*Math.random() | 0).toString(16);
-          console.log('Rainbow pen selected' );
         } else if(selectedPen === "eraserPen")  {
           brushColor = "rgb(248, 247, 246)"
-          console.log("Eraser pen selected")
         } else if(selectedPen === "colorPickerPen") {
           brushColor = chooseColor.value;
-          console.log("Color Picker Pen Selected");
         } else if(selectedPen === "greyscalePen")  {
             if(e.target.classList.contains('shade'))  {
               e.target.style.opacity = parseFloat(e.target.style.opacity) + (1/8);
-              console.log(".shade Class added to a cell");
             } else {
               e.target.style.opacity = "0.125";
               e.target.classList.add('shade');
@@ -116,7 +117,6 @@ eraserBtn.addEventListener('click', () => {
 clearBtn.addEventListener('click', () => {
   gridBuild(size);
   drawOn()
-  console.log("Grid Cleared")
 })
 
 gridBtn.addEventListener('click', () => {
