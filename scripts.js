@@ -26,19 +26,24 @@ function gridBuild(size) {
   for(i = 0; i < size * size; i++) {
     let cell = document.createElement('div');
     cell.classList.add('cell');
+    if(gridBtn.textContent === "Turn Grid On")  {
+      cell.style.border = 0;
+    } else if(gridBtn.textContent === "Turn Grid Off") {
+      cell.style.border = "0.1px dashed rgba(85, 83, 83, 0.1)";
+    }
     grid.append(cell);
   }
 }
 gridBuild(size);
 
 function toggleGrid() {
-  if(gridBtn.textContent === "Grid Off") {
-    gridBtn.innerText = "Grid On"
+  if(gridBtn.textContent === "Turn Grid Off") {
+    gridBtn.innerText = "Turn Grid On"
     for(i = 0; i < size * size; i++) {
       cell[i].style.border = 0;
     }
-  } else if(gridBtn.textContent === "Grid On") {
-    gridBtn.innerText = "Grid Off"
+  } else if(gridBtn.textContent === "Turn Grid On") {
+    gridBtn.innerText = "Turn Grid Off"
     for(i = 0; i < size * size; i++) {
       cell[i].style.border = "0.1px dashed rgba(85, 83, 83, 0.1)";
     }
