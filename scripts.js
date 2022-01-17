@@ -28,7 +28,7 @@ function gridBuild(size) {
     cell.classList.add('cell');
     if(gridBtn.textContent === "Turn Grid On")  {
       cell.style.border = 0;
-    } else if(gridBtn.textContent === "Turn Grid Off") {
+    } else {
       cell.style.border = "0.1px dashed rgba(85, 83, 83, 0.1)";
     }
     grid.append(cell);
@@ -42,7 +42,7 @@ function toggleGrid() {
     for(i = 0; i < size * size; i++) {
       cell[i].style.border = 0;
     }
-  } else if(gridBtn.textContent === "Turn Grid On") {
+  } else {
     gridBtn.innerText = "Turn Grid Off"
     for(i = 0; i < size * size; i++) {
       cell[i].style.border = "0.1px dashed rgba(85, 83, 83, 0.1)";
