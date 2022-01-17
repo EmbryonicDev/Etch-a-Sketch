@@ -55,13 +55,6 @@ body.addEventListener('mouseup', function(e) {
   penDown = false;
 })
 
-// This allows the first cell clicked on to be painted as well. 
-for(i = 0; i < size * size; ++i)  {
-  cell[i].addEventListener('mousedown', function(e) {
-    e.target.style.background = brushColor;
-  })
-}
-
 // Add eventListener to each cell & select pen
 function drawOn() {
   for(i = 0; i < size * size; ++i)  {
