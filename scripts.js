@@ -74,6 +74,7 @@ function drawOn() {
         // Select pen color
         if(selectedPen === "greyscalePen")  {
           brushColor = defualtBrushColor;
+          e.target.style.backgroundColor = brushColor;
           if(e.target.classList.contains('shade'))  {
             e.target.style.opacity = parseFloat(e.target.style.opacity) + (1/8);
           } else {
@@ -83,12 +84,15 @@ function drawOn() {
         } else if(selectedPen === "rainbowPen")  {
           brushColor = "#" + ((1<<24)*Math.random() | 0).toString(16);
           e.target.style.opacity = "1";
+          e.target.style.backgroundColor = brushColor;
         } else if(selectedPen === "eraserPen")  {
           brushColor = "rgb(248, 247, 246)"
           e.target.style.opacity = "1";
+          e.target.style.backgroundColor = brushColor;
         } else if(selectedPen === "colorPickerPen") {
           brushColor = chooseColor.value;
           e.target.style.opacity = "1";
+          e.target.style.backgroundColor = brushColor;
         } 
       } 
     });
