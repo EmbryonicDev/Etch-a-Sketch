@@ -90,9 +90,7 @@ function drawOn() {
               e.target.style.opacity = "0.125";
               e.target.classList.add('shade');
             }
-        } else {
-          e.target.style.background = brushColor;
-        }
+        } 
       } 
     });
   }
