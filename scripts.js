@@ -71,9 +71,16 @@ function drawOn() {
         if((selectedPen != "greyscalePen") && e.target.classList.contains('shade')) {
           e.target.classList.remove('shade');
         }
-
         // Select pen color
-        if(selectedPen === "rainbowPen")  {
+        if(selectedPen === "greyscalePen")  {
+          brushColor = defualtBrushColor;
+          if(e.target.classList.contains('shade'))  {
+            e.target.style.opacity = parseFloat(e.target.style.opacity) + (1/8);
+          } else {
+            e.target.style.opacity = "0.125";
+            e.target.classList.add('shade');
+          }
+        } else if(selectedPen === "rainbowPen")  {
           brushColor = "#" + ((1<<24)*Math.random() | 0).toString(16);
           e.target.style.opacity = "1";
         } else if(selectedPen === "eraserPen")  {
@@ -82,14 +89,6 @@ function drawOn() {
         } else if(selectedPen === "colorPickerPen") {
           brushColor = chooseColor.value;
           e.target.style.opacity = "1";
-        } else if(selectedPen === "greyscalePen")  {
-            brushColor = defualtBrushColor
-            if(e.target.classList.contains('shade'))  {
-              e.target.style.opacity = parseFloat(e.target.style.opacity) + (1/8);
-            } else {
-              e.target.style.opacity = "0.125";
-              e.target.classList.add('shade');
-            }
         } 
       } 
     });
@@ -108,7 +107,7 @@ chooseColor.addEventListener('input', () => {
 
 rainbowBtn.addEventListener('click', () => {
   selectedPen = "rainbowPen";
-  drawOn();
+  // drawOn();
   });
 
 eraserBtn.addEventListener('click', () => {
