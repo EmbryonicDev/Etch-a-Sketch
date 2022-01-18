@@ -63,7 +63,7 @@ body.addEventListener('mouseup', function(e) {
 // Add eventListener to each cell & select pen
 function drawOn() {
   for(i = 0; i < size * size; ++i)  {
-    cell[i].addEventListener('mouseenter', function(e) {
+    cell[i].addEventListener('mouseout', function(e) {
       if(penDown)  {
         e.target.style.background = brushColor;
 
