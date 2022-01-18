@@ -14,7 +14,7 @@ Digital drawing toy
   
   Eraser tool returns each cell passed over to it's original blank color
   
-  Clear button returns all cells to its original color
+  Clear button returns all cells to its original color while maintaining grid size & grid lines
   
   Toggle the grid borders with the Grid Off/On button
   
